@@ -67,17 +67,54 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
 
     @Override
     public boolean remove(T item){
-        
+        if (head == null) {
+            return false;
+        }
+
+        if (item.equals(head.data)) {
+            head = head.next;
+            size--;
+            return true;
+        }
+
+        Node<T> current = head;
+        while (current.next != null && !item.equals(current.next.data)) {
+            current = current.next;
+        }
+
+        if (current.next == null) {
+            return false;
+        }
+
+        current.next = current.next.next;
+        size--;
+        return true;
     }
 
     @Override
     public T remove(int index){
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
 
+        Node<T> current = head;
+        if (index == 0) {
+            head = head.next;
+        } else {
+            Node<T> previous = getNode(index - 1);
+            current = previous.next;
+            previous.next = current.next;
+        }
+
+        size--;
+        return current.data;
     }
     
     @Override
     public void clear(){
         size = 0;
+        head = null;
+        tail = null;
     }
 
     @Override
