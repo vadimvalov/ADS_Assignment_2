@@ -1,6 +1,7 @@
 public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
     private int size;
     private Node<T> head;
+    private Node<T> tail; // O(1) for adding...
     private static class Node<T> {
         T data;
         Node<T> next;
@@ -10,6 +11,25 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
         }
     }
 
+    private Node<T> getNode(int index){
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current;
+    }
+
+    public MyLinkedList(){
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
     @Override 
     public int size(){
         return size;
@@ -17,22 +37,37 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
 
     @Override
     public boolean contains(Object o){
-
+        return indexOf(o) != -1;
     }
 
     @Override
     public void add(T item){
-
+        add(item, size);
     }
 
     @Override
     public void add(T item, int index) {
+         if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
 
+        Node<T> newNode = new Node<>(item);
+
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node<T> current = getNode(index - 1);
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        size++;
     }
 
     @Override
     public boolean remove(T item){
-
+        
     }
 
     @Override
