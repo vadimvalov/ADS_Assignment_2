@@ -119,17 +119,46 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
 
     @Override
     public T get(int index){
+         if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
 
+        return getNode(index).data;
     }
 
     @Override
     public int indexOf(Object o){
+        int index = 0;
+        Node<T> current = head;
 
+        while (current != null) {
+            if (o.equals(current.data)) {
+                return index;
+            }
+
+            current = current.next;
+            index++;
+        }
+
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o){
+        int index = -1;
+        Node<T> current = head;
 
+        int i = 0;
+        while (current != null) {
+            if (o.equals(current.data)) {
+                index = i;
+            }
+
+            current = current.next;
+            i++;
+        }
+
+        return index;
     }
 
     @Override
