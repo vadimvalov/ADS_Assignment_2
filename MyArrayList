@@ -1,0 +1,58 @@
+public class MyArrayList<T> implements MyList<T> {
+    private int size;
+
+    @Override 
+    public int size(){
+        return size;
+    }
+
+    @Override
+    public boolean contains(Object o){
+
+    }
+
+    @Override
+    public void add(T item){
+
+    }
+
+    @Override
+    public void add(T item, int index) {
+
+    }
+
+    @Override
+    public boolean remove(T item){
+
+    }
+
+    @Override
+    public T remove(int index){
+
+    }
+    
+    @Override
+    public void clear(){
+        size = 0;
+    }
+
+    @Override
+    public T get(int index){
+
+    }
+
+    @Override
+    public int indexOf(Object o){
+
+    }
+
+    @Override
+    public int lastIndexOf(Object o){
+
+    }
+
+    @Override
+    public void sort(){
+
+    }
+}
