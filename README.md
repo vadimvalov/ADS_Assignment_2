@@ -25,3 +25,5 @@ To ensure the correctness, 'test.java' file is open to edit. Simply create a cla
 
 <h4> Contributing: </h4>
 This is a homework assignment and I do not plan to develop this project further. However, I will certainly review Pull Requests. Obviously, I have lots of mistakes over here, so you can fix them :)
+
+<h1> 20/100 😭 </h1>
